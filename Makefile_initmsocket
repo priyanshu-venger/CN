@@ -1,0 +1,12 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -pedantic -Wno-unused-parameter
+LDFLAGS = -pthread
+
+initmsocket: initmsocket.o libmsocket.a
+	$(CC) $(CFLAGS) $(LDFLAGS) -o initmsocket initmsocket.o -L. -lmsocket
+
+initmsocket.o: initmsocket.c
+	$(CC) $(CFLAGS) -c initmsocket.c -o initmsocket.o
+
+clean:
+	rm -f initmsocket *.o
